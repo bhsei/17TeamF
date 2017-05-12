@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="scala-actors">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/scala-actors.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/scala-actors-migration.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/scala-compiler.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

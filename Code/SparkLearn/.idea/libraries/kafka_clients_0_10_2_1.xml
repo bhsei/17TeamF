@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="kafka-clients-0.10.2.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/kafka-clients-0.10.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/kafka-streams-0.10.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/kafka-tools-0.10.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/kafka_2.10-0.10.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

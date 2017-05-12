@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact name="SparkLearn:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SparkLearn_jar</output-path>
+    <root id="root">
+      <element id="archive" name="SparkLearn.jar">
+        <element id="module-output" name="SparkLearn" />
+      </element>
+      <element id="directory" name="lib">
+        <element id="library" level="project" name="kafka-clients-0.10.2.1" />
+        <element id="library" level="project" name="activation-1.1.1" />
+        <element id="library" level="project" name="spark-core_2.11-1.5.2.logging" />
+        <element id="library" level="project" name="spark-streaming-kafka_2.10-1.6.2" />
+        <element id="library" level="project" name="zkclient-0.9" />
+        <element id="library" level="project" name="metrics-core-2.2.0" />
+        <element id="library" level="project" name="spray-client-1.3.1" />
+        <element id="library" level="project" name="zkclient-0.1.0" />
+        <element id="library" level="project" name="scalap" />
+        <element id="library" level="project" name="scala-swing" />
+        <element id="library" level="project" name="scala-library" />
+        <element id="library" level="project" name="scala-actors" />
+        <element id="library" level="project" name="libsvm" />
+        <element id="library" level="project" name="hanlp-1.2.8" />
+      </element>
+    </root>
+  </artifact>
+</component>

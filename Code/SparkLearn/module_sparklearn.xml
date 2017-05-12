@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_sparklearn" default="compile.module.sparklearn">
+  <dirname property="module.sparklearn.basedir" file="${ant.file.module_sparklearn}"/>
+  
+  <property name="module.jdk.home.sparklearn" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.sparklearn" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.sparklearn" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.sparklearn" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="sparklearn.output.dir" value="${module.sparklearn.basedir}/out/production/SparkLearn"/>
+  <property name="sparklearn.testoutput.dir" value="${module.sparklearn.basedir}/out/test/SparkLearn"/>
+  
+  <path id="sparklearn.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="sparklearn.module.production.classpath">
+    <path refid="${module.jdk.classpath.sparklearn}"/>
+    <path refid="library.activation-1.1.1.classpath"/>
+  </path>
+  
+  <path id="sparklearn.runtime.production.module.classpath">
+    <pathelement location="${sparklearn.output.dir}"/>
+    <path refid="library.activation-1.1.1.classpath"/>
+  </path>
+  
+  <path id="sparklearn.module.classpath">
+    <path refid="${module.jdk.classpath.sparklearn}"/>
+    <pathelement location="${sparklearn.output.dir}"/>
+    <path refid="library.activation-1.1.1.classpath"/>
+  </path>
+  
+  <path id="sparklearn.runtime.module.classpath">
+    <pathelement location="${sparklearn.testoutput.dir}"/>
+    <pathelement location="${sparklearn.output.dir}"/>
+    <path refid="library.activation-1.1.1.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.sparklearn">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.sparklearn">
+    <patternset refid="excluded.from.module.sparklearn"/>
+  </patternset>
+  
+  <path id="sparklearn.module.sourcepath">
+    <dirset dir="${module.sparklearn.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.sparklearn" depends="compile.module.sparklearn.production,compile.module.sparklearn.tests" description="Compile module SparkLearn"/>
+  
+  <target name="compile.module.sparklearn.production" depends="register.custom.compilers" description="Compile module SparkLearn; production classes">
+    <mkdir dir="${sparklearn.output.dir}"/>
+    <javac2 destdir="${sparklearn.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.sparklearn}/javac">
+      <compilerarg line="${compiler.args.sparklearn}"/>
+      <bootclasspath refid="sparklearn.module.bootclasspath"/>
+      <classpath refid="sparklearn.module.production.classpath"/>
+      <src refid="sparklearn.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.sparklearn"/>
+    </javac2>
+    
+    <copy todir="${sparklearn.output.dir}">
+      <fileset dir="${module.sparklearn.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.sparklearn.tests" depends="register.custom.compilers,compile.module.sparklearn.production" description="compile module SparkLearn; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.sparklearn" description="cleanup module">
+    <delete dir="${sparklearn.output.dir}"/>
+    <delete dir="${sparklearn.testoutput.dir}"/>
+  </target>
+</project>

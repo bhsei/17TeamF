@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sparklearn" default="all">
+  
+  
+  <property file="sparklearn.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.ear"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.activation-1.1.classpath">
+    <pathelement location="${basedir}/libs/JavaEWAH-0.3.2.jar"/>
+    <pathelement location="${basedir}/libs/RoaringBitmap-0.5.11.jar"/>
+    <pathelement location="${basedir}/libs/ST4-4.0.4.jar"/>
+    <pathelement location="${basedir}/libs/activation-1.1.jar"/>
+    <pathelement location="${basedir}/libs/antlr-2.7.7.jar"/>
+    <pathelement location="${basedir}/libs/antlr-runtime-3.4.jar"/>
+    <pathelement location="${basedir}/libs/antlr4-runtime-4.5.3.jar"/>
+    <pathelement location="${basedir}/libs/aopalliance-1.0.jar"/>
+    <pathelement location="${basedir}/libs/aopalliance-repackaged-2.4.0-b34.jar"/>
+    <pathelement location="${basedir}/libs/apache-log4j-extras-1.2.17.jar"/>
+    <pathelement location="${basedir}/libs/apacheds-i18n-2.0.0-M15.jar"/>
+    <pathelement location="${basedir}/libs/apacheds-kerberos-codec-2.0.0-M15.jar"/>
+    <pathelement location="${basedir}/libs/api-asn1-api-1.0.0-M20.jar"/>
+    <pathelement location="${basedir}/libs/api-util-1.0.0-M20.jar"/>
+    <pathelement location="${basedir}/libs/arpack_combined_all-0.1.jar"/>
+    <pathelement location="${basedir}/libs/asm-3.2.jar"/>
+    <pathelement location="${basedir}/libs/avro-1.7.7.jar"/>
+    <pathelement location="${basedir}/libs/avro-ipc-1.7.7.jar"/>
+    <pathelement location="${basedir}/libs/avro-mapred-1.7.7-hadoop2.jar"/>
+    <pathelement location="${basedir}/libs/aws-java-sdk-1.7.4.jar"/>
+    <pathelement location="${basedir}/libs/azure-storage-2.0.0.jar"/>
+    <pathelement location="${basedir}/libs/base64-2.3.8.jar"/>
+    <pathelement location="${basedir}/libs/bcprov-jdk15on-1.51.jar"/>
+    <pathelement location="${basedir}/libs/bonecp-0.8.0.RELEASE.jar"/>
+    <pathelement location="${basedir}/libs/breeze-macros_2.11-0.12.jar"/>
+    <pathelement location="${basedir}/libs/breeze_2.11-0.12.jar"/>
+    <pathelement location="${basedir}/libs/calcite-avatica-1.2.0-incubating.jar"/>
+    <pathelement location="${basedir}/libs/calcite-core-1.2.0-incubating.jar"/>
+    <pathelement location="${basedir}/libs/calcite-linq4j-1.2.0-incubating.jar"/>
+    <pathelement location="${basedir}/libs/chill-java-0.8.0.jar"/>
+    <pathelement location="${basedir}/libs/chill_2.11-0.8.0.jar"/>
+    <pathelement location="${basedir}/libs/commons-beanutils-1.7.0.jar"/>
+    <pathelement location="${basedir}/libs/commons-beanutils-core-1.8.0.jar"/>
+    <pathelement location="${basedir}/libs/commons-cli-1.2.jar"/>
+    <pathelement location="${basedir}/libs/commons-codec-1.4.jar"/>
+    <pathelement location="${basedir}/libs/commons-collections-3.2.2.jar"/>
+    <pathelement location="${basedir}/libs/commons-compiler-3.0.0.jar"/>
+    <pathelement location="${basedir}/libs/commons-compress-1.4.1.jar"/>
+    <pathelement location="${basedir}/libs/commons-configuration-1.6.jar"/>
+    <pathelement location="${basedir}/libs/commons-crypto-1.0.0.jar"/>
+    <pathelement location="${basedir}/libs/commons-daemon-1.0.13.jar"/>
+    <pathelement location="${basedir}/libs/commons-dbcp-1.4.jar"/>
+    <pathelement location="${basedir}/libs/commons-digester-1.8.jar"/>
+    <pathelement location="${basedir}/libs/commons-httpclient-3.1.jar"/>
+    <pathelement location="${basedir}/libs/commons-io-2.4.jar"/>
+    <pathelement location="${basedir}/libs/commons-lang-2.6.jar"/>
+    <pathelement location="${basedir}/libs/commons-lang3-3.5.jar"/>
+    <pathelement location="${basedir}/libs/commons-logging-1.1.3.jar"/>
+    <pathelement location="${basedir}/libs/commons-math3-3.4.1.jar"/>
+    <pathelement location="${basedir}/libs/commons-net-3.1.jar"/>
+    <pathelement location="${basedir}/libs/commons-pool-1.5.4.jar"/>
+    <pathelement location="${basedir}/libs/compress-lzf-1.0.3.jar"/>
+    <pathelement location="${basedir}/libs/core-1.1.2.jar"/>
+    <pathelement location="${basedir}/libs/curator-client-2.7.1.jar"/>
+    <pathelement location="${basedir}/libs/curator-framework-2.7.1.jar"/>
+    <pathelement location="${basedir}/libs/curator-recipes-2.7.1.jar"/>
+    <pathelement location="${basedir}/libs/datanucleus-api-jdo-3.2.6.jar"/>
+    <pathelement location="${basedir}/libs/datanucleus-core-3.2.10.jar"/>
+    <pathelement location="${basedir}/libs/datanucleus-rdbms-3.2.9.jar"/>
+    <pathelement location="${basedir}/libs/derby-10.12.1.1.jar"/>
+    <pathelement location="${basedir}/libs/eigenbase-properties-1.1.5.jar"/>
+    <pathelement location="${basedir}/libs/gson-2.2.4.jar"/>
+    <pathelement location="${basedir}/libs/guava-14.0.1.jar"/>
+    <pathelement location="${basedir}/libs/guice-3.0.jar"/>
+    <pathelement location="${basedir}/libs/guice-servlet-3.0.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-annotations-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-ant-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-archives-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-auth-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-aws-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-azure-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-common-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-datajoin-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-distcp-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-extras-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-gridmix-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-hdfs-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-mapreduce-client-app-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-mapreduce-client-common-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-mapreduce-client-core-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-mapreduce-client-jobclient-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-mapreduce-client-shuffle-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-openstack-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-rumen-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-sls-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-streaming-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-api-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-applications-distributedshell-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-applications-unmanaged-am-launcher-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-client-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-common-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-registry-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-server-applicationhistoryservice-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-server-common-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-server-nodemanager-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-server-resourcemanager-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-server-sharedcachemanager-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-server-tests-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hadoop-yarn-server-web-proxy-2.7.3.jar"/>
+    <pathelement location="${basedir}/libs/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/libs/hive-beeline-1.2.1.spark2.jar"/>
+    <pathelement location="${basedir}/libs/hive-cli-1.2.1.spark2.jar"/>
+    <pathelement location="${basedir}/libs/hive-exec-1.2.1.spark2.jar"/>
+    <pathelement location="${basedir}/libs/hive-jdbc-1.2.1.spark2.jar"/>
+    <pathelement location="${basedir}/libs/hive-metastore-1.2.1.spark2.jar"/>
+    <pathelement location="${basedir}/libs/hk2-api-2.4.0-b34.jar"/>
+    <pathelement location="${basedir}/libs/hk2-locator-2.4.0-b34.jar"/>
+    <pathelement location="${basedir}/libs/hk2-utils-2.4.0-b34.jar"/>
+    <pathelement location="${basedir}/libs/htrace-core-3.1.0-incubating.jar"/>
+    <pathelement location="${basedir}/libs/httpclient-4.5.2.jar"/>
+    <pathelement location="${basedir}/libs/httpcore-4.4.4.jar"/>
+    <pathelement location="${basedir}/libs/ivy-2.4.0.jar"/>
+    <pathelement location="${basedir}/libs/jackson-annotations-2.6.5.jar"/>
+    <pathelement location="${basedir}/libs/jackson-core-2.6.5.jar"/>
+    <pathelement location="${basedir}/libs/jackson-core-asl-1.9.13.jar"/>
+    <pathelement location="${basedir}/libs/jackson-databind-2.6.5.jar"/>
+    <pathelement location="${basedir}/libs/jackson-jaxrs-1.9.13.jar"/>
+    <pathelement location="${basedir}/libs/jackson-mapper-asl-1.9.13.jar"/>
+    <pathelement location="${basedir}/libs/jackson-module-paranamer-2.6.5.jar"/>
+    <pathelement location="${basedir}/libs/jackson-module-scala_2.11-2.6.5.jar"/>
+    <pathelement location="${basedir}/libs/jackson-xc-1.9.13.jar"/>
+    <pathelement location="${basedir}/libs/janino-3.0.0.jar"/>
+    <pathelement location="${basedir}/libs/java-xmlbuilder-1.0.jar"/>
+    <pathelement location="${basedir}/libs/javassist-3.18.1-GA.jar"/>
+    <pathelement location="${basedir}/libs/javax.annotation-api-1.2.jar"/>
+    <pathelement location="${basedir}/libs/javax.inject-1.jar"/>
+    <pathelement location="${basedir}/libs/javax.inject-2.4.0-b34.jar"/>
+    <pathelement location="${basedir}/libs/javax.servlet-api-3.1.0.jar"/>
+    <pathelement location="${basedir}/libs/javax.ws.rs-api-2.0.1.jar"/>
+    <pathelement location="${basedir}/libs/javolution-5.5.1.jar"/>
+    <pathelement location="${basedir}/libs/jaxb-api-2.2.2.jar"/>
+    <pathelement location="${basedir}/libs/jaxb-impl-2.2.3-1.jar"/>
+    <pathelement location="${basedir}/libs/jcl-over-slf4j-1.7.16.jar"/>
+    <pathelement location="${basedir}/libs/jdo-api-3.0.1.jar"/>
+    <pathelement location="${basedir}/libs/jersey-client-2.22.2.jar"/>
+    <pathelement location="${basedir}/libs/jersey-common-2.22.2.jar"/>
+    <pathelement location="${basedir}/libs/jersey-container-servlet-2.22.2.jar"/>
+    <pathelement location="${basedir}/libs/jersey-container-servlet-core-2.22.2.jar"/>
+    <pathelement location="${basedir}/libs/jersey-core-1.9.jar"/>
+    <pathelement location="${basedir}/libs/jersey-guava-2.22.2.jar"/>
+    <pathelement location="${basedir}/libs/jersey-guice-1.9.jar"/>
+    <pathelement location="${basedir}/libs/jersey-json-1.9.jar"/>
+    <pathelement location="${basedir}/libs/jersey-media-jaxb-2.22.2.jar"/>
+    <pathelement location="${basedir}/libs/jersey-server-1.9.jar"/>
+    <pathelement location="${basedir}/libs/jersey-server-2.22.2.jar"/>
+    <pathelement location="${basedir}/libs/jets3t-0.9.3.jar"/>
+    <pathelement location="${basedir}/libs/jettison-1.1.jar"/>
+    <pathelement location="${basedir}/libs/jetty-6.1.26.jar"/>
+    <pathelement location="${basedir}/libs/jetty-util-6.1.26.jar"/>
+    <pathelement location="${basedir}/libs/jline-2.12.1.jar"/>
+    <pathelement location="${basedir}/libs/joda-time-2.9.4.jar"/>
+    <pathelement location="${basedir}/libs/jodd-core-3.5.2.jar"/>
+    <pathelement location="${basedir}/libs/jpam-1.1.jar"/>
+    <pathelement location="${basedir}/libs/jsch-0.1.42.jar"/>
+    <pathelement location="${basedir}/libs/json4s-ast_2.11-3.2.11.jar"/>
+    <pathelement location="${basedir}/libs/json4s-core_2.11-3.2.11.jar"/>
+    <pathelement location="${basedir}/libs/json4s-jackson_2.11-3.2.11.jar"/>
+    <pathelement location="${basedir}/libs/jsp-api-2.1.jar"/>
+    <pathelement location="${basedir}/libs/jsr305-3.0.0.jar"/>
+    <pathelement location="${basedir}/libs/jta-1.1.jar"/>
+    <pathelement location="${basedir}/libs/jtransforms-2.4.0.jar"/>
+    <pathelement location="${basedir}/libs/jul-to-slf4j-1.7.16.jar"/>
+    <pathelement location="${basedir}/libs/junit-4.11.jar"/>
+    <pathelement location="${basedir}/libs/kryo-shaded-3.0.3.jar"/>
+    <pathelement location="${basedir}/libs/leveldbjni-all-1.8.jar"/>
+    <pathelement location="${basedir}/libs/libfb303-0.9.2.jar"/>
+    <pathelement location="${basedir}/libs/libthrift-0.9.2.jar"/>
+    <pathelement location="${basedir}/libs/log4j-1.2.17.jar"/>
+    <pathelement location="${basedir}/libs/lz4-1.3.0.jar"/>
+    <pathelement location="${basedir}/libs/mail-1.4.7.jar"/>
+    <pathelement location="${basedir}/libs/mesos-1.0.0-shaded-protobuf.jar"/>
+    <pathelement location="${basedir}/libs/metrics-core-3.1.2.jar"/>
+    <pathelement location="${basedir}/libs/metrics-graphite-3.1.2.jar"/>
+    <pathelement location="${basedir}/libs/metrics-json-3.1.2.jar"/>
+    <pathelement location="${basedir}/libs/metrics-jvm-3.1.2.jar"/>
+    <pathelement location="${basedir}/libs/minlog-1.3.0.jar"/>
+    <pathelement location="${basedir}/libs/mockito-all-1.8.5.jar"/>
+    <pathelement location="${basedir}/libs/mx4j-3.0.2.jar"/>
+    <pathelement location="${basedir}/libs/netty-3.8.0.Final.jar"/>
+    <pathelement location="${basedir}/libs/netty-all-4.0.42.Final.jar"/>
+    <pathelement location="${basedir}/libs/objenesis-2.1.jar"/>
+    <pathelement location="${basedir}/libs/opencsv-2.3.jar"/>
+    <pathelement location="${basedir}/libs/oro-2.0.8.jar"/>
+    <pathelement location="${basedir}/libs/osgi-resource-locator-1.0.1.jar"/>
+    <pathelement location="${basedir}/libs/paranamer-2.3.jar"/>
+    <pathelement location="${basedir}/libs/parquet-column-1.8.1.jar"/>
+    <pathelement location="${basedir}/libs/parquet-common-1.8.1.jar"/>
+    <pathelement location="${basedir}/libs/parquet-encoding-1.8.1.jar"/>
+    <pathelement location="${basedir}/libs/parquet-format-2.3.0-incubating.jar"/>
+    <pathelement location="${basedir}/libs/parquet-hadoop-1.8.1.jar"/>
+    <pathelement location="${basedir}/libs/parquet-hadoop-bundle-1.6.0.jar"/>
+    <pathelement location="${basedir}/libs/parquet-jackson-1.8.1.jar"/>
+    <pathelement location="${basedir}/libs/pmml-model-1.2.15.jar"/>
+    <pathelement location="${basedir}/libs/pmml-schema-1.2.15.jar"/>
+    <pathelement location="${basedir}/libs/protobuf-java-2.5.0.jar"/>
+    <pathelement location="${basedir}/libs/py4j-0.10.4.jar"/>
+    <pathelement location="${basedir}/libs/pyrolite-4.13.jar"/>
+    <pathelement location="${basedir}/libs/scala-compiler-2.11.8.jar"/>
+    <pathelement location="${basedir}/libs/scala-library-2.11.8.jar"/>
+    <pathelement location="${basedir}/libs/scala-parser-combinators_2.11-1.0.4.jar"/>
+    <pathelement location="${basedir}/libs/scala-reflect-2.11.8.jar"/>
+    <pathelement location="${basedir}/libs/scala-xml_2.11-1.0.2.jar"/>
+    <pathelement location="${basedir}/libs/scalap-2.11.8.jar"/>
+    <pathelement location="${basedir}/libs/servlet-api-2.5.jar"/>
+    <pathelement location="${basedir}/libs/shapeless_2.11-2.0.0.jar"/>
+    <pathelement location="${basedir}/libs/slf4j-api-1.7.16.jar"/>
+    <pathelement location="${basedir}/libs/slf4j-log4j12-1.7.16.jar"/>
+    <pathelement location="${basedir}/libs/snappy-0.2.jar"/>
+    <pathelement location="${basedir}/libs/snappy-java-1.1.2.6.jar"/>
+    <pathelement location="${basedir}/libs/spark-catalyst_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-core_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-graphx_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-hive-thriftserver_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-hive_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-launcher_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-mesos_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-mllib-local_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-mllib_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-network-common_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-network-shuffle_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-repl_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-sketch_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-sql_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-streaming_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-tags_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-unsafe_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spark-yarn_2.11-2.1.0.jar"/>
+    <pathelement location="${basedir}/libs/spire-macros_2.11-0.7.4.jar"/>
+    <pathelement location="${basedir}/libs/spire_2.11-0.7.4.jar"/>
+    <pathelement location="${basedir}/libs/stax-api-1.0-2.jar"/>
+    <pathelement location="${basedir}/libs/stream-2.7.0.jar"/>
+    <pathelement location="${basedir}/libs/stringtemplate-3.2.1.jar"/>
+    <pathelement location="${basedir}/libs/super-csv-2.2.0.jar"/>
+    <pathelement location="${basedir}/libs/univocity-parsers-2.2.1.jar"/>
+    <pathelement location="${basedir}/libs/validation-api-1.1.0.Final.jar"/>
+    <pathelement location="${basedir}/libs/xbean-asm5-shaded-4.4.jar"/>
+    <pathelement location="${basedir}/libs/xercesImpl-2.9.1.jar"/>
+    <pathelement location="${basedir}/libs/xml-apis-1.3.04.jar"/>
+    <pathelement location="${basedir}/libs/xmlenc-0.52.jar"/>
+    <pathelement location="${basedir}/libs/xz-1.0.jar"/>
+    <pathelement location="${basedir}/libs/zookeeper-3.4.6-tests.jar"/>
+    <pathelement location="${basedir}/libs/zookeeper-3.4.6.jar"/>
+  </path>
+  
+  <path id="library.hadoop-client-2.7.3.classpath">
+    <pathelement location="${basedir}/libs/hadoop-client-2.7.3.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_sparklearn.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.sparklearn" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.sparklearn" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.sparklearn:jar" value="${basedir}/out/artifacts/SparkLearn_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.SparkLearn.jar" value="${artifacts.temp.dir}/SparkLearn.jar"/>
+  </target>
+  
+  <target name="artifact.sparklearn:jar" depends="init.artifacts, compile.module.sparklearn" description="Build &#39;SparkLearn:jar&#39; artifact">
+    <property name="artifact.temp.output.sparklearn:jar" value="${artifacts.temp.dir}/SparkLearn_jar"/>
+    <mkdir dir="${artifact.temp.output.sparklearn:jar}"/>
+    <jar destfile="${temp.jar.path.SparkLearn.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${sparklearn.output.dir}"/>
+      <zipfileset src="${basedir}/libs/javax.annotation-api-1.2.jar"/>
+      <zipfileset src="${basedir}/libs/javax.servlet-api-3.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/jersey-common-2.22.2.jar"/>
+      <zipfileset src="${basedir}/libs/java-xmlbuilder-1.0.jar"/>
+      <zipfileset src="${basedir}/libs/jersey-container-servlet-2.22.2.jar"/>
+      <zipfileset src="${basedir}/libs/jcl-over-slf4j-1.7.16.jar"/>
+      <zipfileset src="${basedir}/libs/javax.inject-2.4.0-b34.jar"/>
+      <zipfileset src="${basedir}/libs/jersey-guava-2.22.2.jar"/>
+      <zipfileset src="${basedir}/libs/javassist-3.18.1-GA.jar"/>
+      <zipfileset src="${basedir}/libs/janino-3.0.0.jar"/>
+      <zipfileset src="${basedir}/libs/jersey-client-2.22.2.jar"/>
+      <zipfileset src="${basedir}/libs/javolution-5.5.1.jar"/>
+      <zipfileset src="${basedir}/libs/jdo-api-3.0.1.jar"/>
+      <zipfileset src="${basedir}/libs/JavaEWAH-0.3.2.jar"/>
+      <zipfileset src="${basedir}/libs/javax.ws.rs-api-2.0.1.jar"/>
+      <zipfileset src="${basedir}/libs/jersey-container-servlet-core-2.22.2.jar"/>
+      <zipfileset src="${basedir}/libs/jersey-media-jaxb-2.22.2.jar"/>
+      <zipfileset src="${basedir}/libs/jersey-server-2.22.2.jar"/>
+      <zipfileset src="${basedir}/libs/jets3t-0.9.3.jar"/>
+      <zipfileset src="${basedir}/libs/jline-2.12.1.jar"/>
+      <zipfileset src="${basedir}/libs/commons-compiler-3.0.0.jar"/>
+      <zipfileset src="${basedir}/libs/commons-crypto-1.0.0.jar"/>
+      <zipfileset src="${basedir}/libs/commons-dbcp-1.4.jar"/>
+      <zipfileset src="${basedir}/libs/commons-lang3-3.5.jar"/>
+      <zipfileset src="${basedir}/libs/commons-math3-3.4.1.jar"/>
+      <zipfileset src="${basedir}/libs/commons-pool-1.5.4.jar"/>
+      <zipfileset src="${basedir}/libs/compress-lzf-1.0.3.jar"/>
+      <zipfileset src="${basedir}/libs/core-1.1.2.jar"/>
+      <zipfileset src="${basedir}/libs/py4j-0.10.4.jar"/>
+      <zipfileset src="${basedir}/libs/pyrolite-4.13.jar"/>
+      <zipfileset src="${basedir}/libs/RoaringBitmap-0.5.11.jar"/>
+      <zipfileset src="${basedir}/libs/scala-compiler-2.11.8.jar"/>
+      <zipfileset src="${basedir}/libs/scala-library-2.11.8.jar"/>
+      <zipfileset src="${basedir}/libs/scala-parser-combinators_2.11-1.0.4.jar"/>
+      <zipfileset src="${basedir}/libs/scala-reflect-2.11.8.jar"/>
+      <zipfileset src="${basedir}/libs/scala-xml_2.11-1.0.2.jar"/>
+      <zipfileset src="${basedir}/libs/scalap-2.11.8.jar"/>
+      <zipfileset src="${basedir}/libs/stream-2.7.0.jar"/>
+      <zipfileset src="${basedir}/libs/stringtemplate-3.2.1.jar"/>
+      <zipfileset src="${basedir}/libs/super-csv-2.2.0.jar"/>
+      <zipfileset src="${basedir}/libs/univocity-parsers-2.2.1.jar"/>
+      <zipfileset src="${basedir}/libs/validation-api-1.1.0.Final.jar"/>
+      <zipfileset src="${basedir}/libs/xbean-asm5-shaded-4.4.jar"/>
+      <zipfileset src="${basedir}/libs/arpack_combined_all-0.1.jar"/>
+      <zipfileset src="${basedir}/libs/activation-1.1.jar"/>
+      <zipfileset src="${basedir}/libs/aopalliance-1.0.jar"/>
+      <zipfileset src="${basedir}/libs/apacheds-i18n-2.0.0-M15.jar"/>
+      <zipfileset src="${basedir}/libs/apacheds-kerberos-codec-2.0.0-M15.jar"/>
+      <zipfileset src="${basedir}/libs/api-asn1-api-1.0.0-M20.jar"/>
+      <zipfileset src="${basedir}/libs/api-util-1.0.0-M20.jar"/>
+      <zipfileset src="${basedir}/libs/asm-3.2.jar"/>
+      <zipfileset src="${basedir}/libs/aws-java-sdk-1.7.4.jar"/>
+      <zipfileset src="${basedir}/libs/azure-storage-2.0.0.jar"/>
+      <zipfileset src="${basedir}/libs/commons-beanutils-1.7.0.jar"/>
+      <zipfileset src="${basedir}/libs/commons-beanutils-core-1.8.0.jar"/>
+      <zipfileset src="${basedir}/libs/commons-cli-1.2.jar"/>
+      <zipfileset src="${basedir}/libs/commons-codec-1.4.jar"/>
+      <zipfileset src="${basedir}/libs/commons-collections-3.2.2.jar"/>
+      <zipfileset src="${basedir}/libs/commons-compress-1.4.1.jar"/>
+      <zipfileset src="${basedir}/libs/commons-configuration-1.6.jar"/>
+      <zipfileset src="${basedir}/libs/commons-daemon-1.0.13.jar"/>
+      <zipfileset src="${basedir}/libs/commons-digester-1.8.jar"/>
+      <zipfileset src="${basedir}/libs/commons-httpclient-3.1.jar"/>
+      <zipfileset src="${basedir}/libs/commons-io-2.4.jar"/>
+      <zipfileset src="${basedir}/libs/commons-lang-2.6.jar"/>
+      <zipfileset src="${basedir}/libs/commons-logging-1.1.3.jar"/>
+      <zipfileset src="${basedir}/libs/commons-net-3.1.jar"/>
+      <zipfileset src="${basedir}/libs/curator-client-2.7.1.jar"/>
+      <zipfileset src="${basedir}/libs/curator-framework-2.7.1.jar"/>
+      <zipfileset src="${basedir}/libs/curator-recipes-2.7.1.jar"/>
+      <zipfileset src="${basedir}/libs/gson-2.2.4.jar"/>
+      <zipfileset src="${basedir}/libs/guice-3.0.jar"/>
+      <zipfileset src="${basedir}/libs/guice-servlet-3.0.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-annotations-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-ant-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-archives-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-auth-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-aws-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-azure-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-common-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-datajoin-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-distcp-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-extras-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-gridmix-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-hdfs-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-mapreduce-client-app-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-mapreduce-client-common-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-mapreduce-client-core-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-openstack-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-rumen-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-sls-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-streaming-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-api-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-applications-distributedshell-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-applications-unmanaged-am-launcher-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-client-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-common-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-registry-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-server-applicationhistoryservice-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-server-common-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-server-nodemanager-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-server-resourcemanager-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-server-sharedcachemanager-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-server-tests-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-yarn-server-web-proxy-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hamcrest-core-1.3.jar"/>
+      <zipfileset src="${basedir}/libs/htrace-core-3.1.0-incubating.jar"/>
+      <zipfileset src="${basedir}/libs/jackson-core-asl-1.9.13.jar"/>
+      <zipfileset src="${basedir}/libs/jackson-jaxrs-1.9.13.jar"/>
+      <zipfileset src="${basedir}/libs/jackson-mapper-asl-1.9.13.jar"/>
+      <zipfileset src="${basedir}/libs/jackson-xc-1.9.13.jar"/>
+      <zipfileset src="${basedir}/libs/javax.inject-1.jar"/>
+      <zipfileset src="${basedir}/libs/jaxb-api-2.2.2.jar"/>
+      <zipfileset src="${basedir}/libs/jaxb-impl-2.2.3-1.jar"/>
+      <zipfileset src="${basedir}/libs/jersey-core-1.9.jar"/>
+      <zipfileset src="${basedir}/libs/jersey-guice-1.9.jar"/>
+      <zipfileset src="${basedir}/libs/jersey-json-1.9.jar"/>
+      <zipfileset src="${basedir}/libs/jersey-server-1.9.jar"/>
+      <zipfileset src="${basedir}/libs/jettison-1.1.jar"/>
+      <zipfileset src="${basedir}/libs/jetty-6.1.26.jar"/>
+      <zipfileset src="${basedir}/libs/jetty-util-6.1.26.jar"/>
+      <zipfileset src="${basedir}/libs/joda-time-2.9.4.jar"/>
+      <zipfileset src="${basedir}/libs/jsch-0.1.42.jar"/>
+      <zipfileset src="${basedir}/libs/jsp-api-2.1.jar"/>
+      <zipfileset src="${basedir}/libs/jsr305-3.0.0.jar"/>
+      <zipfileset src="${basedir}/libs/junit-4.11.jar"/>
+      <zipfileset src="${basedir}/libs/leveldbjni-all-1.8.jar"/>
+      <zipfileset src="${basedir}/libs/log4j-1.2.17.jar"/>
+      <zipfileset src="${basedir}/libs/mockito-all-1.8.5.jar"/>
+      <zipfileset src="${basedir}/libs/paranamer-2.3.jar"/>
+      <zipfileset src="${basedir}/libs/protobuf-java-2.5.0.jar"/>
+      <zipfileset src="${basedir}/libs/servlet-api-2.5.jar"/>
+      <zipfileset src="${basedir}/libs/stax-api-1.0-2.jar"/>
+      <zipfileset src="${basedir}/libs/xercesImpl-2.9.1.jar"/>
+      <zipfileset src="${basedir}/libs/xml-apis-1.3.04.jar"/>
+      <zipfileset src="${basedir}/libs/xmlenc-0.52.jar"/>
+      <zipfileset src="${basedir}/libs/xz-1.0.jar"/>
+      <zipfileset src="${basedir}/libs/zookeeper-3.4.6.jar"/>
+      <zipfileset src="${basedir}/libs/zookeeper-3.4.6-tests.jar"/>
+      <zipfileset src="${basedir}/libs/parquet-hadoop-1.8.1.jar"/>
+      <zipfileset src="${basedir}/libs/parquet-hadoop-bundle-1.6.0.jar"/>
+      <zipfileset src="${basedir}/libs/parquet-jackson-1.8.1.jar"/>
+      <zipfileset src="${basedir}/libs/pmml-model-1.2.15.jar"/>
+      <zipfileset src="${basedir}/libs/pmml-schema-1.2.15.jar"/>
+      <zipfileset src="${basedir}/libs/jpam-1.1.jar"/>
+      <zipfileset src="${basedir}/libs/jodd-core-3.5.2.jar"/>
+      <zipfileset src="${basedir}/libs/json4s-ast_2.11-3.2.11.jar"/>
+      <zipfileset src="${basedir}/libs/json4s-jackson_2.11-3.2.11.jar"/>
+      <zipfileset src="${basedir}/libs/json4s-core_2.11-3.2.11.jar"/>
+      <zipfileset src="${basedir}/libs/jta-1.1.jar"/>
+      <zipfileset src="${basedir}/libs/jtransforms-2.4.0.jar"/>
+      <zipfileset src="${basedir}/libs/jul-to-slf4j-1.7.16.jar"/>
+      <zipfileset src="${basedir}/libs/kryo-shaded-3.0.3.jar"/>
+      <zipfileset src="${basedir}/libs/libfb303-0.9.2.jar"/>
+      <zipfileset src="${basedir}/libs/libthrift-0.9.2.jar"/>
+      <zipfileset src="${basedir}/libs/mail-1.4.7.jar"/>
+      <zipfileset src="${basedir}/libs/lz4-1.3.0.jar"/>
+      <zipfileset src="${basedir}/libs/mesos-1.0.0-shaded-protobuf.jar"/>
+      <zipfileset src="${basedir}/libs/metrics-core-3.1.2.jar"/>
+      <zipfileset src="${basedir}/libs/metrics-graphite-3.1.2.jar"/>
+      <zipfileset src="${basedir}/libs/metrics-json-3.1.2.jar"/>
+      <zipfileset src="${basedir}/libs/metrics-jvm-3.1.2.jar"/>
+      <zipfileset src="${basedir}/libs/minlog-1.3.0.jar"/>
+      <zipfileset src="${basedir}/libs/mx4j-3.0.2.jar"/>
+      <zipfileset src="${basedir}/libs/netty-3.8.0.Final.jar"/>
+      <zipfileset src="${basedir}/libs/netty-all-4.0.42.Final.jar"/>
+      <zipfileset src="${basedir}/libs/objenesis-2.1.jar"/>
+      <zipfileset src="${basedir}/libs/opencsv-2.3.jar"/>
+      <zipfileset src="${basedir}/libs/oro-2.0.8.jar"/>
+      <zipfileset src="${basedir}/libs/osgi-resource-locator-1.0.1.jar"/>
+      <zipfileset src="${basedir}/libs/parquet-column-1.8.1.jar"/>
+      <zipfileset src="${basedir}/libs/parquet-common-1.8.1.jar"/>
+      <zipfileset src="${basedir}/libs/parquet-encoding-1.8.1.jar"/>
+      <zipfileset src="${basedir}/libs/parquet-format-2.3.0-incubating.jar"/>
+      <zipfileset src="${basedir}/libs/apache-log4j-extras-1.2.17.jar"/>
+      <zipfileset src="${basedir}/libs/aopalliance-repackaged-2.4.0-b34.jar"/>
+      <zipfileset src="${basedir}/libs/antlr-runtime-3.4.jar"/>
+      <zipfileset src="${basedir}/libs/antlr-2.7.7.jar"/>
+      <zipfileset src="${basedir}/libs/antlr4-runtime-4.5.3.jar"/>
+      <zipfileset src="${basedir}/libs/avro-1.7.7.jar"/>
+      <zipfileset src="${basedir}/libs/avro-ipc-1.7.7.jar"/>
+      <zipfileset src="${basedir}/libs/avro-mapred-1.7.7-hadoop2.jar"/>
+      <zipfileset src="${basedir}/libs/snappy-java-1.1.2.6.jar"/>
+      <zipfileset src="${basedir}/libs/spark-catalyst_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-core_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-graphx_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-hive-thriftserver_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-hive_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-launcher_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-mesos_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-mllib-local_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-mllib_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-network-common_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-network-shuffle_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-repl_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-sketch_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-sql_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-streaming_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-tags_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-unsafe_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spark-yarn_2.11-2.1.0.jar"/>
+      <zipfileset src="${basedir}/libs/spire-macros_2.11-0.7.4.jar"/>
+      <zipfileset src="${basedir}/libs/spire_2.11-0.7.4.jar"/>
+      <zipfileset src="${basedir}/libs/ST4-4.0.4.jar"/>
+      <zipfileset src="${basedir}/libs/shapeless_2.11-2.0.0.jar"/>
+      <zipfileset src="${basedir}/libs/slf4j-api-1.7.16.jar"/>
+      <zipfileset src="${basedir}/libs/slf4j-log4j12-1.7.16.jar"/>
+      <zipfileset src="${basedir}/libs/snappy-0.2.jar"/>
+      <zipfileset src="${basedir}/libs/base64-2.3.8.jar"/>
+      <zipfileset src="${basedir}/libs/bcprov-jdk15on-1.51.jar"/>
+      <zipfileset src="${basedir}/libs/bonecp-0.8.0.RELEASE.jar"/>
+      <zipfileset src="${basedir}/libs/breeze-macros_2.11-0.12.jar"/>
+      <zipfileset src="${basedir}/libs/breeze_2.11-0.12.jar"/>
+      <zipfileset src="${basedir}/libs/calcite-avatica-1.2.0-incubating.jar"/>
+      <zipfileset src="${basedir}/libs/calcite-core-1.2.0-incubating.jar"/>
+      <zipfileset src="${basedir}/libs/calcite-linq4j-1.2.0-incubating.jar"/>
+      <zipfileset src="${basedir}/libs/chill-java-0.8.0.jar"/>
+      <zipfileset src="${basedir}/libs/chill_2.11-0.8.0.jar"/>
+      <zipfileset src="${basedir}/libs/datanucleus-api-jdo-3.2.6.jar"/>
+      <zipfileset src="${basedir}/libs/datanucleus-core-3.2.10.jar"/>
+      <zipfileset src="${basedir}/libs/datanucleus-rdbms-3.2.9.jar"/>
+      <zipfileset src="${basedir}/libs/derby-10.12.1.1.jar"/>
+      <zipfileset src="${basedir}/libs/eigenbase-properties-1.1.5.jar"/>
+      <zipfileset src="${basedir}/libs/guava-14.0.1.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-mapreduce-client-jobclient-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hadoop-mapreduce-client-shuffle-2.7.3.jar"/>
+      <zipfileset src="${basedir}/libs/hive-beeline-1.2.1.spark2.jar"/>
+      <zipfileset src="${basedir}/libs/hive-cli-1.2.1.spark2.jar"/>
+      <zipfileset src="${basedir}/libs/hive-exec-1.2.1.spark2.jar"/>
+      <zipfileset src="${basedir}/libs/hive-jdbc-1.2.1.spark2.jar"/>
+      <zipfileset src="${basedir}/libs/hive-metastore-1.2.1.spark2.jar"/>
+      <zipfileset src="${basedir}/libs/hk2-api-2.4.0-b34.jar"/>
+      <zipfileset src="${basedir}/libs/hk2-locator-2.4.0-b34.jar"/>
+      <zipfileset src="${basedir}/libs/hk2-utils-2.4.0-b34.jar"/>
+      <zipfileset src="${basedir}/libs/httpclient-4.5.2.jar"/>
+      <zipfileset src="${basedir}/libs/httpcore-4.4.4.jar"/>
+      <zipfileset src="${basedir}/libs/ivy-2.4.0.jar"/>
+      <zipfileset src="${basedir}/libs/jackson-annotations-2.6.5.jar"/>
+      <zipfileset src="${basedir}/libs/jackson-core-2.6.5.jar"/>
+      <zipfileset src="${basedir}/libs/jackson-databind-2.6.5.jar"/>
+      <zipfileset src="${basedir}/libs/jackson-module-paranamer-2.6.5.jar"/>
+      <zipfileset src="${basedir}/libs/jackson-module-scala_2.11-2.6.5.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.SparkLearn.jar}" tofile="${artifact.temp.output.sparklearn:jar}/SparkLearn.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.sparklearn:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.sparklearn:jar}"/>
+    <copy todir="${artifact.output.sparklearn:jar}">
+      <fileset dir="${artifact.temp.output.sparklearn:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
