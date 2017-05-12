@@ -1,0 +1,8 @@
+140240026111月11日 05:35【时序数据InfoGAN的Tensorflow实现】’timeseries_gan - A tensorflow implementation of GAN ( exactly InfoGAN or Info GAN ) to one dimensional ( 1D ) time series data.' by Namju Kim GitHub:
+140240026111月11日 06:04【基于malmo的minecraft(像素级)增强学习实验】’deep RL hacking on minecraft with malmo' by mat kelcey GitHub:
+140240026111月11日 06:08【Scikit-Learn文本机器学习】《Machine Learning with Text in scikit-learn (PyData DC 2016) - YouTube》by Kevin Markham
+140240026111月11日 06:13【MNIST半定规划聚类】《Clustering the MNIST dataset via semidefinite programming》by Soledad Villar
+140240026111月11日 06:21【最新自然语言处理(NLP)四步流程：Embed->encode->attend->predict】《Embed, encode, attend, predict: The new deep learning formula for state-of-the-art NLP models》by Matthew Honnibal
+140240026111月11日 06:26【(JS版)用机器学习玩飞翔小鸟】’FlappyLearning - Program learning to play Flappy Bird by machine learning (Neuroevolution)' by Vincent Bazia GitHub:
+140240026111月11日 06:35《学习SLAM需要哪些预备知识？ - 知乎》
+140240026111月11日 06:36《大牛们，你们写论文会“偷藏一手吗？ - 知乎》
